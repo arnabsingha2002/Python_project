@@ -33,3 +33,7 @@ signupLoginLink.forEach(link => {
 aboutUsLink.addEventListener("click", () => {
     window.location.href = "/about-us";
 });
+
+aboutUsLink.addEventListener("click", () => {
+    window.location.href = "/rate";
+});

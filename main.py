@@ -22,3 +22,7 @@ async def login(username: str, password: str):
 @app.get("/about", response_class=HTMLResponse)
 async def about_us(request: Request):
     return templates.TemplateResponse("abt.html", {"request": request})
+
+@app.get("/rate", response_class=HTMLResponse)
+async def about_us(request: Request):
+    return templates.TemplateResponse("rate.html", {"request": request})
