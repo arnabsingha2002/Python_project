@@ -5,21 +5,11 @@ const showPopupBtn = document.querySelector(".login-btn");
 const formPopup = document.querySelector(".form-popup");
 const hidePopupBtn = formPopup.querySelector(".close-btn");
 const signupLoginLink = formPopup.querySelectorAll(".bottom-link a");
-/*const aboutUsLink = document.querySelector(".navbar .links a[href='/about-us']");*/
-
-
-
-
 
 // Show mobile menu
 hamburgerBtn.addEventListener("click", () => {
     navbarMenu.classList.toggle("show-menu");
 });
-
-aboutUsLink.addEventListener("click", () => {
-    window.location.href = "/about-us";
-});
-
 
 // Hide mobile menu
 hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
@@ -40,4 +30,6 @@ signupLoginLink.forEach(link => {
     });
 });
 
-
+aboutUsLink.addEventListener("click", () => {
+    window.location.href = "/about-us";
+});
