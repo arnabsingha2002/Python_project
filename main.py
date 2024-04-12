@@ -18,3 +18,7 @@ async def read_root(request: Request):
 async def login(username: str, password: str):
     # Your login logic here
     return {"message": "Login successful"}
+
+@app.get("/about", response_class=HTMLResponse)
+async def about_us(request: Request):
+    return templates.TemplateResponse("abt.html", {"request": request})
