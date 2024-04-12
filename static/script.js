@@ -30,6 +30,38 @@ signupLoginLink.forEach(link => {
     });
 });
 
-aboutUsLink.addEventListener("click", () => {
-    window.location.href = "/about-us";
+// Register user when signup form is submitted
+const signupForm = document.querySelector(".form-popup .signup form");
+signupForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const email = signupForm.querySelector('input[type="text"]').value;
+    const password = signupForm.querySelector('input[type="password"]').value;
+    
+    const data = {
+        email: email,
+        password: password
+    };
+
+    fetch('/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
 });
+
+// Redirect to About Us page
+const aboutUsLink = document.querySelector(".navbar .links a[href='/about-us']");
+if (aboutUsLink) {
+    aboutUsLink.addEventListener("click", () => {
+        window.location.href = "/about-us";
+    });
+}
