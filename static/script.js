@@ -34,6 +34,6 @@ aboutUsLink.addEventListener("click", () => {
     window.location.href = "/about-us";
 });
 
-aboutUsLink.addEventListener("click", () => {
+rateLink.addEventListener("click", () => {
     window.location.href = "/rate";
 });
