@@ -14,21 +14,6 @@ hamburgerBtn.addEventListener("click", () => {
 // Hide mobile menu
 hideMenuBtn.addEventListener("click", () =>  hamburgerBtn.click());
 
-// Show login popup
-showPopupBtn.addEventListener("click", () => {
-    document.body.classList.toggle("show-popup");
-});
-
-// Hide login popup
-hidePopupBtn.addEventListener("click", () => showPopupBtn.click());
-
-// Show or hide signup form
-signupLoginLink.forEach(link => {
-    link.addEventListener("click", (e) => {
-        e.preventDefault();
-        formPopup.classList[link.id === 'signup-link' ? 'add' : 'remove']("show-signup");
-    });
-});
 
 aboutUsLink.addEventListener("click", () => {
     window.location.href = "/about-us";
@@ -36,4 +21,8 @@ aboutUsLink.addEventListener("click", () => {
 
 rateLink.addEventListener("click", () => {
     window.location.href = "/rate";
+});
+
+homeLink.addEventListener("click", () => {
+    window.location.href = "/home";
 });

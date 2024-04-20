@@ -14,10 +14,7 @@ templates = Jinja2Templates(directory="templates")
 async def read_root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-@app.post("/login")
-async def login(username: str, password: str):
-    # Your login logic here
-    return {"message": "Login successful"}
+
 
 @app.get("/about", response_class=HTMLResponse)
 async def about_us(request: Request):
@@ -26,3 +23,11 @@ async def about_us(request: Request):
 @app.get("/rate", response_class=HTMLResponse)
 async def rate(request: Request):
     return templates.TemplateResponse("rate.html", {"request": request})
+
+@app.get("/login", response_class=HTMLResponse)
+async def login(request: Request):
+    return templates.TemplateResponse("login.html", {"request": request})
+
+@app.get("/home", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("home.html", {"request": request})
