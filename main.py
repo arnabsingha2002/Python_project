@@ -115,5 +115,13 @@ async def create_rating(request: Request):
 
 @app.get("/rated", response_class=HTMLResponse)
 async def rated(request: Request):
-    ratings = rating_collection.find()
-    return templates.TemplateResponse("rated.html", {"request": request, "ratings": ratings})
+    try:
+        # Retrieve all ratings from the database
+        ratings = list(rating_collection.find())
+        logger.info("Retrieved ratings: %s", ratings)
+
+        # Pass the ratings to the template for rendering
+        return templates.TemplateResponse("rated.html", {"request": request, "ratings": ratings})
+    except Exception as e:
+        logger.error("Error retrieving ratings: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to retrieve ratings")

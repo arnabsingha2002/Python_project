@@ -355,3 +355,34 @@ form button:hover {
         padding: 30px 20px;
     }
 }
+
+/* Rated Page Styles */
+.ratings {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 20px;
+    color: #fff;
+}
+
+.ratings h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.ratings ul {
+    list-style: none;
+    padding: 0;
+}
+
+.ratings ul li {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+}
+
+@media (max-width: 760px) {
+    .ratings {
+        padding: 30px 10px;
+    }
+}
