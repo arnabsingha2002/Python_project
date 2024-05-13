@@ -109,3 +109,9 @@ async def delete_rating(rating_id: str):
         return {"message": "Rating deleted successfully"}
     else:
         raise HTTPException(status_code=404, detail="Rating not found")
+
+@app.get("/rated", response_class=HTMLResponse)
+async def rated(request: Request):
+    ratings = collection.find()
+    return templates.TemplateResponse("rated.html", {"request": request, "ratings": ratings})
+
