@@ -26,3 +26,7 @@ rateLink.addEventListener("click", () => {
 homeLink.addEventListener("click", () => {
     window.location.href = "/home";
 });
+
+ratedLink.addEventListener("click", () => {
+    window.location.href = "/rated";
+});

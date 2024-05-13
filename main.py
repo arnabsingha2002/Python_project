@@ -46,6 +46,10 @@ async def login(request: Request):
 async def home(request: Request):
     return templates.TemplateResponse("home.html", {"request": request})
 
+@app.get("/rated", response_class=HTMLResponse)
+async def rate(request: Request):
+    return templates.TemplateResponse("rated.html", {"request": request})
+
 
 @app.post("/signup")
 async def signup(user_data: UserRegistration):
