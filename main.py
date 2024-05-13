@@ -117,4 +117,3 @@ async def create_rating(request: Request):
 async def rated(request: Request):
     ratings = rating_collection.find()
     return templates.TemplateResponse("rated.html", {"request": request, "ratings": ratings})
-
