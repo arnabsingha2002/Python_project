@@ -5,6 +5,12 @@ from fastapi.staticfiles import StaticFiles
 from pymongo import MongoClient
 from bson import ObjectId
 from pydantic import BaseModel
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 
 class UserRegistration(BaseModel):
     email: str
@@ -13,6 +19,11 @@ class UserRegistration(BaseModel):
 class UserLogin(BaseModel):
     email: str
     password: str
+
+class RatingData(BaseModel):
+    rating: int
+    comment: str
+
     
 app = FastAPI(debug=True)
 
@@ -23,6 +34,7 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 client = MongoClient("mongodb://localhost:27017/")
 db = client["mess_rating"]
 collection = db["user_data"]
+rating_collection = db["rating"]    # Collection for storing ratings and comments
 
 templates = Jinja2Templates(directory="templates")
 
@@ -84,38 +96,25 @@ async def login(user_data: UserLogin):
         raise HTTPException(status_code=500, detail="Failed to login")
 
 # MongoDB CRUD operations for ratings
-@app.post("/ratings/")
-async def create_rating(rating: dict):
-    insert_result = collection.insert_one(rating)
-    inserted_id = str(insert_result.inserted_id)
-    return {"message": "Rating created successfully", "rating_id": inserted_id}
+@app.post("/rate")  # Changed endpoint to /rate
+async def create_rating(request: Request):
+    try:
+        form = await request.form()  # Parse form data
+        rating_data = RatingData(rating=int(form['rating']), comment=form['comment'])  # Construct RatingData object
+        # Insert the rating data into the database
+        result = rating_collection.insert_one(rating_data.dict())
+        inserted_id = str(result.inserted_id)
+        logger.info("Rating created with ID: %s", inserted_id)
+        
+        # Redirect back to the rate.html page after successfully storing the rating
+        return RedirectResponse(url="/rate", status_code=303)  # Change status code to 303
+    except Exception as e:
+        logger.error("Error creating rating: %s", e)
+        raise HTTPException(status_code=500, detail="Failed to create rating")
 
-@app.get("/ratings/{rating_id}")
-async def read_rating(rating_id: str):
-    user_data = collection.find_one({"_id": ObjectId(rating_id)})
-    if user_data:
-        return user_data
-    else:
-        raise HTTPException(status_code=404, detail="Rating not found")
-
-@app.put("/ratings/{rating_id}")
-async def update_rating(rating_id: str, new_rating: dict):
-    result = collection.update_one({"_id": ObjectId(rating_id)}, {"$set": new_rating})
-    if result.modified_count == 1:
-        return {"message": "Rating updated successfully"}
-    else:
-        raise HTTPException(status_code=404, detail="Rating not found")
-
-@app.delete("/ratings/{rating_id}")
-async def delete_rating(rating_id: str):
-    result = collection.delete_one({"_id": ObjectId(rating_id)})
-    if result.deleted_count == 1:
-        return {"message": "Rating deleted successfully"}
-    else:
-        raise HTTPException(status_code=404, detail="Rating not found")
 
 @app.get("/rated", response_class=HTMLResponse)
 async def rated(request: Request):
-    ratings = collection.find()
+    ratings = rating_collection.find()
     return templates.TemplateResponse("rated.html", {"request": request, "ratings": ratings})
 
