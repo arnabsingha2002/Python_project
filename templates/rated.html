@@ -11,30 +11,30 @@
   <div>
     <nav class="navbar navbar ">
       <span class="hamburger-btn material-symbols-rounded">menu</span>
-      <a href="https://www.ashoka.edu.in/campus-facilities/" class="logo">
-          <img src="/static/images/uni.jpg" alt="logo">
+      <a href="#" class="logo">
+          <img src="/static/images/logo.png" alt="logo">
           <h2>BotsAshoka</h2>
       </a>
       <ul class="links">
+          
           <li><a href="/home">Home</a></li>
           <li><a href="/rate">Rate Us</a></li>
-          <li><a href="/dining">Dining Menu</a></li>
+          <li><a href="#">Dining Menu</a></li>
           <li><a href="/about">About us</a></li>
+          <li><a href="#">Contact us</a></li>
           <li><a href="/rated">Rated</a></li>
           <span class="close-btn material-symbols-rounded">close</span>
       </ul>
     </nav>
   </div>
 
-  <div class="container">
+  <div class="ratings">
     <h1>Rated Page</h1>
-    <div class="ratings-container">
-      <ul class="ratings-list">
-          {% for rating in ratings %}
-              <li>Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</li>
-          {% endfor %}
-      </ul>
-    </div>
+    <ul>
+        {% for rating in ratings %}
+            <li>Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</li>
+        {% endfor %}
+    </ul>
   </div>
 </body>
 </html>
