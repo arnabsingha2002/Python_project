@@ -120,4 +120,8 @@ async def create_rating(request: Request):
     except Exception as e:
         logger.error("Error creating rating: %s", e)
         raise HTTPException(status_code=500, detail="Failed to create rating")
+    
+@app.get("/dining", response_class=HTMLResponse)
+async def dining(request: Request):
+    return templates.TemplateResponse("dining.html", {"request": request})
 

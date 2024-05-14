@@ -30,3 +30,7 @@ homeLink.addEventListener("click", () => {
 ratedLink.addEventListener("click", () => {
     window.location.href = "/rated";
 });
+
+aboutUsLink.addEventListener("click", () => {
+    window.location.href = "/dining";
+});

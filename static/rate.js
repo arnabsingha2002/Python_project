@@ -26,6 +26,10 @@ ratedLink.addEventListener("click", () => {
     window.location.href = "/rated";
 });
 
+aboutUsLink.addEventListener("click", () => {
+    window.location.href = "/dining";
+});
+
 
 // Add event listener to form submission
 document.getElementById('ratingForm').addEventListener('submit', async (event) => {
