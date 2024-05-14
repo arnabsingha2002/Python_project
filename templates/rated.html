@@ -16,7 +16,6 @@
           <h2>BotsAshoka</h2>
       </a>
       <ul class="links">
-          
           <li><a href="/home">Home</a></li>
           <li><a href="/rate">Rate Us</a></li>
           <li><a href="#">Dining Menu</a></li>
@@ -28,13 +27,15 @@
     </nav>
   </div>
 
-  <div class="ratings">
+  <div class="container">
     <h1>Rated Page</h1>
-    <ul>
-        {% for rating in ratings %}
-            <li>Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</li>
-        {% endfor %}
-    </ul>
+    <div class="ratings-container">
+      <ul class="ratings-list">
+          {% for rating in ratings %}
+              <li>Rating: {{ rating.rating }}, Comment: {{ rating.comment }}</li>
+          {% endfor %}
+      </ul>
+    </div>
   </div>
 </body>
 </html>

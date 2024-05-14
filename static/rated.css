@@ -356,12 +356,18 @@ form button:hover {
     }
 }
 
+
+
 /* Rated Page Styles */
 .ratings {
     max-width: 1200px;
     margin: 0 auto;
     padding: 50px 20px;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
 }
 
 .ratings h1 {
@@ -369,16 +375,22 @@ form button:hover {
     margin-bottom: 30px;
 }
 
-.ratings ul {
+.ratings .ratings-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    width: 100%; /* Full width */
+    max-width: 800px; /* Maximum width for the container */
+    margin-top: 20px; /* Add some space between h1 and container */
+}
+
+.ratings .ratings-list {
     list-style: none;
     padding: 0;
 }
 
-.ratings ul li {
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
+.ratings .ratings-list li {
     margin-bottom: 15px;
-    border-radius: 5px;
 }
 
 @media (max-width: 760px) {
@@ -386,3 +398,4 @@ form button:hover {
         padding: 30px 10px;
     }
 }
+
