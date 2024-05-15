@@ -29,7 +29,7 @@ const updateClick = (e) => {
   clearInterval(intervalId);
   // Calculate the updated image index based on the button clicked
   imageIndex += e.target.id === "next" ? 1 : -1;
-  slideImage(imageIndex);
+  slideImage(); // Remove the argument here
   // Restart the automatic slideshow
   autoSlide();
 };
