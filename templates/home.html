@@ -6,7 +6,7 @@
     <title>BotsAshoka</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,0,0">
     <link rel="stylesheet" href="/static/home.css">
-    <script src="/static/home.js" defer></script>
+    <link rel="stylesheet" href="/static/slider.css">
 </head>
 <body>
     <nav class="navbar">
@@ -23,6 +23,22 @@
         </ul>
     </nav>
 
+    <div class="wrapper">
+        <i class="fa-solid fa-arrow-left button" id="prev"></i>
+        <div class="image-container">
+            <div class="carousel">
+                <img src="/static/images/Anulya P.jpg" alt="">
+                <img src="/static/images/Arnab.jpg" alt="">
+                <img src="/static/images/Surya.jpg" alt="">
+                <img src="/static/images/signup.png" alt="">
+            </div>
+            <i class="fa-solid fa-arrow-right button" id="next"></i>
+        </div>
+    </div>
+
     <div class="blur-bg-overlay"></div>
+
+    <script src="/static/home.js" defer></script>
+    <script src="/static/slider.js" defer></script>
 </body>
 </html>
