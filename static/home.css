@@ -355,3 +355,28 @@ form button:hover {
         padding: 30px 20px;
     }
 }
+
+.slider {
+    position: relative;
+    width: 100%; /* Adjust the width of the slider */
+    height: 510px; /* Set the height of the slider */
+    overflow: hidden; /* Hide overflow to display only one image at a time */
+    margin: 0 auto;
+}
+
+.slider img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1000px;
+    height: 510px;
+    opacity: 1; /* Initially set opacity to 1 */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.slider img.hidden {
+    opacity: 0; /* Hide images with opacity transition */
+}
+
+
